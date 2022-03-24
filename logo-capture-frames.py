@@ -2,6 +2,9 @@
 #!nix-shell -i python3 -p python3 ffmpeg curl
 
 import subprocess
+import sys
+
+color = sys.argv[1]
 
 for lednum in range(0, 360):
     print(f"Frame #{lednum}")
@@ -9,7 +12,7 @@ for lednum in range(0, 360):
     for _ in range(0, 360):
         colors.append('000000')
 
-    colors[lednum] = '0f0f0f'
+    colors[lednum] = color
 
     subprocess.run(["rm", f"./led-{lednum}.bmp"], check=False)
     subprocess.run(["curl", "-v", "http://10.5.4.51:3030?message=" + (",".join(colors))], check=True)
