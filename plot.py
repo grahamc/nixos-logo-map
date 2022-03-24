@@ -3,22 +3,20 @@
 
 import matplotlib.pyplot as plt
 import json
+import sys
 
-xs = []
-ys = []
-datas = []
+color = sys.argv[1]
 
-with open("./combined.json") as f:
+with open(f"./combined-{color}.json") as f:
     data = json.loads(f.read())
 
 fig, ax = plt.subplots()
 
 for led in data:
-    ax.scatter(led['x'], led['y'], marker=f"${led['led']}$", data=datas)
-
+    ax.scatter(led['x'], led['y'], marker=f"${led['led']}$")
 
 ax.set_xlabel("X")
 ax.set_ylabel("Y")
 ax.legend()
-plt.savefig('./plot.svg')
+plt.savefig(f"./plot-{color}.svg")
 print("saved")
