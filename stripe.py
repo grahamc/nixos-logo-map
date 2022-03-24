@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i python3 python3 ffmpeg
+#!nix-shell -i python3 -p python3 ffmpeg
 
 from pprint import pprint
 import subprocess
