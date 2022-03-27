@@ -13,7 +13,15 @@ with open(f"./combined-{color}.json") as f:
 fig, ax = plt.subplots()
 
 for led in data:
-    ax.scatter(led['x'], led['y'], marker=f"${led['led']}$")
+    if int(led['led']) < 60:
+        ax.scatter(led['x'], led['y'], marker=f"${led['led']}$")
+
+ax.imshow(plt.imread("./locator.png"))
+ax.set_xlim(600, 1600)
+ax.set_ylim(1000, 100)
+
+ax.set_xlim(815, 1000)
+ax.set_ylim(950, 750)
 
 ax.set_xlabel("X")
 ax.set_ylabel("Y")

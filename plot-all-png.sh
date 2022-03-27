@@ -3,7 +3,10 @@
 
 for i in $(seq 1 255); do
     color=$(printf '%02x%02x%02x' $i $i $i);
+    echo $color
     if [ -f "combined-$color.json" ]; then
-        python3 ./plot.py "$color";
+      if [ ! -f "plot-$color.png" ]; then
+        python3 ./plot-png.py "$color";
+      fi
     fi
 done
